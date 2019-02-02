@@ -122,11 +122,37 @@ namespace UI.Desktop
                 int idAlumnoInscripcion = 0;
                 foreach(DataGridViewRow fila in this.dgvAlumnos.Rows)
                 {
-                    idAlumnoInscripcion = (int)this.dgvAlumnos.Rows[0].Cells["col0IDAlumnoInscripcion"].Value;
+                    idAlumnoInscripcion = int.Parse(fila.Cells["col0IDAlumnoInscripcion"].Value.ToString());
                     AlumnoInscripcion ai = alumnoInscripcionLogic.GetOne(idAlumnoInscripcion);
-                    if (this.dgvAlumnos.Rows[0].Cells["col4Nota"].Value.ToString() != "-")
+                    string nuevaNota = fila.Cells["col4Nota"].Value.ToString();
+
+                    if (nuevaNota == "-")
                     {
-                        ai.Nota = int.Parse(this.dgvAlumnos.Rows[0].Cells["col4Nota"].Value.ToString());
+                        nuevaNota = "0";
+                        ai.Condicion = "Inscripto";
+                    }
+                    if (nuevaNota != ai.Nota.ToString())
+                    {
+                        ai.Nota = int.Parse(nuevaNota);
+                        ai.fechaCambio = DateTime.Today;
+                        ai.State = BusinessEntity.States.Modified;
+                        if (ai.Nota < 6 && ai.Nota != 0)
+                            ai.Condicion = "No regular";
+                        else if (ai.Nota < 8)
+                            ai.Condicion = "Regular";
+                        else
+                            ai.Condicion = "Aprobado";
+                        this.alumnoInscripcionLogic.Save(ai);
+                    }
+
+                    /*
+                    if (nuevaNota == "-")
+                    {
+                        nuevaNota = "0";
+                    }
+                    if (nuevaNota != ai.Nota.ToString())
+                    { 
+                        ai.Nota = int.Parse(fila.Cells["col4Nota"].Value.ToString());
                         if (ai.Nota < 6)
                             ai.Condicion = "No regular";
                         else if (ai.Nota < 8)
@@ -142,8 +168,9 @@ namespace UI.Desktop
                     }
                     ai.State = BusinessEntity.States.Modified;
                     this.alumnoInscripcionLogic.Save(ai);
+                    */
                 }
-                this.btnEditar.Text = "Editar";
+                this.btnEditar.Text = "Editar Notas";
                 this.btnSalir.Text = "Salir";
                 this.dgvAlumnos.Columns["col4Nota"].ReadOnly = false;
                 this.edicion = false;

@@ -112,7 +112,7 @@ namespace UI.Desktop
             }
             else
             {
-                this.lblTitulo.Text = "Sin cursos";
+                this.lblTitulo.Text = "Sin notas";
             }
         }
 
@@ -215,7 +215,7 @@ namespace UI.Desktop
             int cant = 0;
             for (int u = 0; u < this.dgvCursos.RowCount; u++)
             {
-                if (this.dgvCursos.Rows[u].Visible == true)
+                if (this.dgvCursos.Rows[u].Visible == true && this.dgvCursos.Rows[u].Cells[7].Value.ToString() != "0")
                 {
                     promedio += (int)this.dgvCursos.Rows[u].Cells[7].Value;
                     cant++;
@@ -224,12 +224,12 @@ namespace UI.Desktop
 
             if (cantFiltros == 0)
             {
-                this.lblTitulo.Text = cant == 0 ? "Sin cursos" : "Promedio total: " + promedio.ToString();
+                this.lblTitulo.Text = cant == 0 ? "Sin notas" : "Promedio total: " + promedio.ToString();
                 this.lblFiltrosAplicados.Text = "(Sin filtros aplicados)";
             }
             else
             {
-                this.lblTitulo.Text = cant == 0 ? "Sin cursos" : "Promedio del filtro: " + promedio.ToString();
+                this.lblTitulo.Text = cant == 0 ? "Sin notas" : "Promedio del filtro: " + promedio.ToString();
                 this.lblFiltrosAplicados.Text = "(" + cantFiltros + " filtros aplicados)";
             }
             

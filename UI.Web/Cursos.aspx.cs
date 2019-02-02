@@ -286,6 +286,7 @@ namespace UI.Web
                         AluInscripcionActual.Condicion = "inscripto";
                         AluInscripcionActual.IDCurso = this.SelectedId;
                         AluInscripcionActual.IDAlumno = (int)Session["currentUserID"];
+                        AluInscripcionActual.fechaCambio = new DateTime(1900, 1, 1);
                         AlumnosInscripcionLogic.Save(AluInscripcionActual);
                     }
                 }

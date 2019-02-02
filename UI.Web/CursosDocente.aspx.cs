@@ -26,6 +26,19 @@ namespace UI.Web
                 return _personaLogic;
             }
         }
+        
+        private bool edicionHabilitada
+        {
+            get {
+                if(this.ViewState["edicionHabilitada"] != null)
+                {
+                    return (bool)this.ViewState["edicionHabilitada"];
+                }
+                return false;
+            }
+            set { this.ViewState["edicionHabilitada"] = value; }
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,13 +53,21 @@ namespace UI.Web
                 }
                 else
                 {
-                    this.LoadGrid();
+                    this.LoadGridCursos();
                 }
             }
 
-
         }
-        private void LoadGrid()
+
+
+        /* Métodos de entidad */
+
+        /* -- Métodos de entidad -- */
+
+
+        /* Métodos de la grilla de cursos */
+
+        private void LoadGridCursos()
         {
             // Carga la grilla con los cursos del docente
             DocenteCursoLogic DCLogic = new DocenteCursoLogic();
@@ -68,6 +89,7 @@ namespace UI.Web
         {
             this.SelectedId = (int)this.gridView.SelectedValue;
         }
+
         protected void gridView_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -98,148 +120,183 @@ namespace UI.Web
             }
         }
 
-        /* Métodos de click de grilla de cursos */
+        /* -- Métodos de la grilla de cursos -- */
+
+
+        /* Métodos de click de acciones de cursos */
+
         protected void verCursoLinkButton_Click(object sender, EventArgs e)
         {
-            /*
             if (this.IsEntitySelected)
             {
                 this.gridPanel.Visible = false;
                 this.formPanel.Visible = true;
-                this.EnableForm(false);
-                this.LoadForm(this.SelectedId);
+                this.EnableGridAlumnos();
+                this.LoadGridAlumnos();
+            }
+        }
 
-                //Cambia el texto del boton aceptar por "Inscribir" o "Anular inscripcion"
-                PersonasLogic persLogic = new PersonasLogic();
-                List<AlumnoInscripcion> inscripciondesDeAlumno = AlumnosInscripcionLogic.FindCursos((int)Session["currentUserID"]);
+        /* -- Métodos de click de acciones de cursos -- */
 
-                this.aceptarLinkButton.Text = "Inscribir";
-                this.ViewState["AluInscripcionActualState"] = BusinessEntity.States.New.ToString();
-                foreach (AlumnoInscripcion ai in inscripciondesDeAlumno)
+
+        /* Métodos de grilla de alumnos */
+
+        private void EnableGridAlumnos()
+        {
+            this.habilitarEdicionButton.Visible = true;
+            this.aceptarLinkButton.Visible = false;
+            this.habilitarEdicionButton.Enabled = true;
+            this.aceptarLinkButton.Enabled = false;
+            this.cancelarLinkButton.Text = "Atrás";
+            this.edicionHabilitada = false;
+        }
+
+        private void LoadGridAlumnos()
+        {
+            // Carga en el formulario de edicion los datos del curso seleccionado
+            if (this.IsPostBack)
+            {
+                List<AlumnoInscripcion> alumnosDelCurso = new AlumnosInscripcionLogic().FindAlumnos(this.SelectedId);
+                this.gridViewAlumnos.DataSource = alumnosDelCurso;
+                this.gridViewAlumnos.DataBind();
+                //Le pone la nota a los alumnos en el dropdown
+                foreach (AlumnoInscripcion ai in alumnosDelCurso)
                 {
-                    if (ai.IDCurso == this.SelectedId)
+                    if (ai.Nota != 0)
                     {
-                        this.aceptarLinkButton.Text = "Anular Inscripcion";
-                        this.ViewState["AluInscripcionActualID"] = ai.ID;
-                        this.ViewState["AluInscripcionActualState"] = BusinessEntity.States.Deleted.ToString();
-                        break;
+                        foreach (GridViewRow row in this.gridViewAlumnos.Rows)
+                        {
+                            if(ai.IDAlumno == int.Parse(row.Cells[6].Text))
+                            {
+                                var dropDown = row.FindControl("dropNotas") as DropDownList;
+                                dropDown.SelectedValue = ai.Nota.ToString();
+                            }
+                        }
                     }
                 }
-            }
-            */
-        }
-        /* -- Métodos de click de grilla de cursos -- */
 
-        /* Métodos de click de grilla de edición */
+            }
+            //Falta ver qué hace en el caso de que no haya alumnos
+        }
+
+        protected void gridViewAlumnos_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string idAlumno = e.Row.Cells[0].Text;
+
+                // Cambia las id de alumnos por nombre apellido y legajo
+                e.Row.Cells[0].Text = new PersonasLogic().GetOne(int.Parse(idAlumno)).Apellido;
+                e.Row.Cells[1].Text = new PersonasLogic().GetOne(int.Parse(idAlumno)).Nombre;
+                e.Row.Cells[2].Text = new PersonasLogic().GetOne(int.Parse(idAlumno)).Legajo.ToString();
+                // e.Row.Cells[3].Text = new AlumnosInscripcionLogic().FindSingle(int.Parse(idAlumno), this.SelectedId).Nota.ToString();
+                // e.Row.Cells[3].Text = new AlumnosInscripcionLogic().FindSingle(int.Parse(idAlumno), this.SelectedId).Condicion;
+
+                var ddl = e.Row.FindControl("dropNotas") as DropDownList;
+                if (ddl != null)
+                {
+                    ddl.DataSource = new List<string>() { "-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+                    ddl.DataBind();
+                }
+
+            }
+        }
+
+        /* -- Métodos de grilla de alumnos -- */
+
+
+        /* Métodos de click de acciones de alumnos */
+        
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            /*
-            //Antes de fijarse el modo del formulario se fija si hay un alumno para inscripcion
-            if ((bool)this.ViewState["registryModeOn"])
+            //Inhabilita la edicion de nota
+            this.edicionHabilitada = false;
+
+            // Guarda los alumnos, si fuera necesario
+            foreach (GridViewRow row in this.gridViewAlumnos.Rows)
             {
-                this.CursoActual = this.CrsLogic.GetOne(this.SelectedId);
-
-                // Guarda el estado de la inscripcion, fijandose en State
-
-                if (this.ViewState["AluInscripcionActualState"].ToString() == BusinessEntity.States.New.ToString())
+                AlumnosInscripcionLogic aiLogic = new AlumnosInscripcionLogic();
+                AlumnoInscripcion ai = aiLogic.FindSingle(int.Parse(row.Cells[6].Text), this.SelectedId);
+                var dropDown = row.FindControl("dropNotas") as DropDownList;
+                string nuevaNota = dropDown.SelectedValue;
+                if(nuevaNota == "-")
                 {
-                    AlumnoInscripcion AluInscripcionActual = new AlumnoInscripcion();
-                    List<AlumnoInscripcion> alumnosDeCurso = AlumnosInscripcionLogic.FindAlumnos(this.SelectedId);
-                    if (alumnosDeCurso.Count >= this.CursoActual.Cupo)
-                    {
-                        // Si es una inscripcion nueva, se fija en el cupo del curso
-                        Notificar("No hay cupo suficiente para inscribirse al curso");
-                    }
+                    nuevaNota = "0";
+                    ai.Condicion = "Inscripto";
+                }
+                if (nuevaNota != ai.Nota.ToString())
+                {
+                    ai.Nota = int.Parse(dropDown.SelectedValue);
+                    ai.fechaCambio = DateTime.Today;
+                    ai.State = BusinessEntity.States.Modified;
+                    if (ai.Nota < 6)
+                        ai.Condicion = "No regular";
+                    else if (ai.Nota < 8)
+                        ai.Condicion = "Regular";
                     else
-                    {
-                        AluInscripcionActual.Condicion = "inscripto";
-                        AluInscripcionActual.IDCurso = this.SelectedId;
-                        AluInscripcionActual.IDAlumno = (int)Session["currentUserID"];
-                        AlumnosInscripcionLogic.Save(AluInscripcionActual);
-                    }
-                }
-                if (this.ViewState["AluInscripcionActualState"].ToString() == BusinessEntity.States.Deleted.ToString())
-                {
-                    //Debería confirmar
-                    AlumnosInscripcionLogic.Delete((int)this.ViewState["AluInscripcionActualID"]);
-                }
-            }
-            else
-            {
-                switch (this.FormMode)
-                {
-                    case FormModes.Baja:
-                        //Primero debería borrar la relacion asociada
-                        this.DocenteCursoActual = new DocenteCurso();
-                        this.DocenteCursoActual.ID = this.DocCursoLogic.FindDocente(this.SelectedId).ID;
-                        this.DocenteCursoActual.State = BusinessEntity.States.Deleted;
-                        this.DocCursoLogic.Save(this.DocenteCursoActual);
-                        //Borra las inscripciones del curso y después el curso en sí
-                        //AlumnosInscripcionLogic.Delete((int)this.ViewState["AluInscripcionActualID"]);
-                        foreach (AlumnoInscripcion ai in AlumnosInscripcionLogic.FindAlumnos(this.SelectedId))
-                        {
-                            AlumnosInscripcionLogic.Delete(ai.ID);
-                        }
-                        this.DeleteEntity(this.SelectedId);
-                        this.LoadGrid();
-                        break;
-                    case FormModes.Modificacion:
-                        if (this.ValidarCurso())
-                        {
-                            this.CursoActual = new Curso();
-                            this.CursoActual.ID = this.SelectedId;
-                            this.CursoActual.State = BusinessEntity.States.Modified;
-                            this.LoadEntity(this.CursoActual);
-                            this.SaveEntity(this.CursoActual);
-
-                            //Una vez guardado el curso, actualizo la relacion
-                            this.DocenteCursoActual = new DocenteCurso();
-                            this.DocenteCursoActual.ID = this.DocCursoLogic.FindDocente(this.CursoActual.ID).ID;
-                            this.DocenteCursoActual.IDCurso = this.CursoActual.ID;
-                            this.DocenteCursoActual.IDDocente = int.Parse(dropDocente.SelectedValue);
-                            this.DocenteCursoActual.Cargo = 0;
-                            this.DocenteCursoActual.State = BusinessEntity.States.Modified;
-                            this.DocCursoLogic.Save(this.DocenteCursoActual);
-
-                            this.LoadGrid();
-                        }
-                        break;
-                    case FormModes.Alta:
-                        if (this.ValidarCurso())
-                        {
-                            this.CursoActual = new Curso();
-                            this.LoadEntity(this.CursoActual);
-                            this.SaveEntity(this.CursoActual);
-
-                            //Una vez creado el curso, creo la relacion
-                            this.DocenteCursoActual = new DocenteCurso();
-                            this.DocenteCursoActual.IDCurso = this.CursoActual.ID;
-                            this.DocenteCursoActual.IDDocente = int.Parse(dropDocente.SelectedValue);
-                            this.DocenteCursoActual.Cargo = 0;
-                            this.DocenteCursoActual.State = BusinessEntity.States.New;
-                            this.DocCursoLogic.Save(this.DocenteCursoActual);
-
-                            this.LoadGrid();
-                        }
-                        break;
-                    default:
-                        break;
+                        ai.Condicion = "Aprobado";
+                    aiLogic.Save(ai);
                 }
             }
 
-            this.gridPanel.Visible = true;
-            this.formPanel.Visible = false;
-            */
+            // Cambia los botones para habilitar edicion o cancelar
+            this.cancelarLinkButton.Text = "Atrás";
+            this.aceptarLinkButton.Visible = false;
+            this.aceptarLinkButton.Enabled = false;
+            this.habilitarEdicionButton.Visible = true;
+            this.habilitarEdicionButton.Enabled = true;
+            this.LoadGridAlumnos();
+            this.LoadGridCursos();
+
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            /*
-            this.gridPanel.Visible = true;
-            this.ClearForm();
-            this.EnableForm(false);
-            this.formPanel.Visible = false;
-            */
+            if (this.edicionHabilitada)
+            {
+                this.aceptarLinkButton.Visible = false;
+                this.habilitarEdicionButton.Visible = true;
+                this.aceptarLinkButton.Enabled = false;
+                this.habilitarEdicionButton.Enabled = true;
+                this.cancelarLinkButton.Text = "Atrás";
+
+                // Habilita la edicion de nota
+                foreach (GridViewRow row in this.gridViewAlumnos.Rows)
+                {
+                    var dropDown = row.FindControl("dropNotas") as DropDownList;
+                    dropDown.Enabled = false;
+                }
+                this.LoadGridAlumnos();
+            }
+            else
+            {
+                this.gridPanel.Visible = true;
+                this.formPanel.Visible = false;
+            }
+            this.edicionHabilitada = false;
         }
+
+        protected void habilitarEdicionButton_Click(object sender, EventArgs e)
+        {
+            this.edicionHabilitada = true;
+
+            // Habilita la edicion de nota
+            foreach(GridViewRow row in this.gridViewAlumnos.Rows)
+            {
+                var dropDown = row.FindControl("dropNotas") as DropDownList;
+                dropDown.Enabled = true;
+            }
+
+            // Cambia los botones para aceptar o cancelar edicion
+            this.cancelarLinkButton.Text = "Cancelar Edicion";
+            this.habilitarEdicionButton.Visible = false;
+            this.habilitarEdicionButton.Enabled = false;
+            this.aceptarLinkButton.Visible = true;
+            this.aceptarLinkButton.Enabled = true;
+        }
+
+        /* -- Métodos de click de acciones de alumnos -- */
+
+
     }
 }
