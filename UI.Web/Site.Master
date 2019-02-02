@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UI.Web.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title>Academia</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="bootstrap/projection/assets/css/main.css" />
+</head>
+<body>
+    <form id="bodyForm" runat="server">
+        <div id="MainHeader"style="background-color:rgba(255, 131, 0, 0.5215686274509804);position:fixed; top:0; height:60px;width:100%">
+            <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource">
+            </asp:Menu>
+            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource">
+            </asp:Menu>
+            <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server"/>
+            <asp:LinkButton ID="lnkCerrarSesion" runat="server" OnClick="lnkCerrarSesion_Click" style="float:right; margin-right:1%" Font-Size="Smaller">Cerrar Sesión</asp:LinkButton>
+            <asp:LinkButton ID="lnkEditarUsuario" runat="server" OnClick="lnkEditarUsuario_Click" style="float:right; margin-right:1%" Font-Size="Smaller">Editar mi usuario</asp:LinkButton>
+        </div>
+        <div id="MainContent" style="padding-bottom:20px;">
+            <asp:ContentPlaceHolder ID="bodyContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="MainFooter" style="background-color: rgba(255, 131, 0, 0.5215686274509804); text-align: center; vertical-align:middle; position:fixed; bottom:0; width:100%; height:60px">
+            <span>Trabajo Práctico 2</span>
+            <br />
+            <span>Sebastián Rossi - Legajo: 43776</span>
+        </div>
+    </form>
+</body>
+</html>
