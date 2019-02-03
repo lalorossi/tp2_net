@@ -27,5 +27,10 @@ namespace UI.Web
             this.Context.Items["registryModeOn"] = true;
             Server.Transfer("Cursos.aspx");
         }
+
+        protected void btnEstadoAcademico_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("EstadoAcademico.aspx");
+        }
     }
 }

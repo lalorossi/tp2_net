@@ -6,10 +6,7 @@
                 <asp:Button ID="btnCursos" runat="server" Text="Cursos" onClick="btnCursos_Click"/>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Button ID="btnInscripcionCursos" runat="server" Text="Inscripción a Cursos" />
-            </asp:TableCell>
-            <asp:TableCell>
-                <asp:Button ID="btnEstadoAcademico" runat="server" Text="Estado Académico" />
+                <asp:Button ID="btnEstadoAcademico" runat="server" Text="Estado Académico"  onClick="btnEstadoAcademico_Click"/>
             </asp:TableCell>
         </asp:TableRow>
         

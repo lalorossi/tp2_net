@@ -29,6 +29,13 @@ namespace UI.Desktop
             this.mostrarFiltros = false;
         }
 
+        private void EstadoAcademico_Load(object sender, EventArgs e)
+        {
+            this.lblTitulo.Text = "Promedio total: ";
+            //Cambia a "promedio del filtro" cuando se selecciona uno
+            this.Listar();
+        }
+
         public void Listar()
         {            
             CursoLogic cList = new CursoLogic();
@@ -114,13 +121,6 @@ namespace UI.Desktop
             {
                 this.lblTitulo.Text = "Sin notas";
             }
-        }
-
-        private void EstadoAcademico_Load(object sender, EventArgs e)
-        {
-            this.lblTitulo.Text = "Promedio total: ";
-            //Cambia a "promedio del filtro" cuando se selecciona uno
-            this.Listar();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -230,7 +230,14 @@ namespace UI.Desktop
             else
             {
                 this.lblTitulo.Text = cant == 0 ? "Sin notas" : "Promedio del filtro: " + promedio.ToString();
-                this.lblFiltrosAplicados.Text = "(" + cantFiltros + " filtros aplicados)";
+                if (cantFiltros != 1)
+                {
+                    this.lblFiltrosAplicados.Text = "(" + cantFiltros + " filtros aplicados)";
+                }
+                else
+                {
+                    this.lblFiltrosAplicados.Text = "(" + cantFiltros + " filtro aplicado)";
+                }
             }
             
 

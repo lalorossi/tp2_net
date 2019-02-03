@@ -71,6 +71,7 @@
     <Content Include="CursosDocente.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Especialidades.aspx" />
+    <Content Include="EstadoAcademico.aspx" />
     <Content Include="GlobalForm.aspx" />
     <Content Include="LogInForm.aspx" />
     <Content Include="MainAdmin.aspx" />
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="Especialidades.aspx.designer.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoAcademico.aspx.cs">
+      <DependentUpon>EstadoAcademico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EstadoAcademico.aspx.designer.cs">
+      <DependentUpon>EstadoAcademico.aspx</DependentUpon>
     </Compile>
     <Compile Include="GlobalForm.aspx.cs">
       <DependentUpon>GlobalForm.aspx</DependentUpon>

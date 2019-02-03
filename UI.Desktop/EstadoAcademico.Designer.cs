@@ -264,7 +264,7 @@
             // 
             // col5Estado
             // 
-            this.col5Estado.HeaderText = "Estado";
+            this.col5Estado.HeaderText = "Condicion";
             this.col5Estado.Name = "col5Estado";
             this.col5Estado.ReadOnly = true;
             // 
