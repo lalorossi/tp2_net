@@ -13,6 +13,15 @@ namespace UI.Web {
     public partial class Site {
         
         /// <summary>
+        /// Control Header.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Header;
+        
+        /// <summary>
         /// Control bodyForm.
         /// </summary>
         /// <remarks>

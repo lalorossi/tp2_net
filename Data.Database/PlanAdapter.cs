@@ -25,7 +25,7 @@ namespace Data.Database
                 {
                     plan.ID = (int)drPlan["id_plan"];
                     plan.Descripcion = (string)drPlan["desc_plan"];
-                    plan.IDEspecialidad= (int)drPlan["id_espcialidad"];
+                    plan.IDEspecialidad= (int)drPlan["id_especialidad"];
                 }
 
                 drPlan.Close();
@@ -56,7 +56,7 @@ namespace Data.Database
 
                     plan.ID = (int)drPlanes["id_plan"];
                     plan.Descripcion = (string)drPlanes["desc_plan"];
-                    plan.IDEspecialidad = (int)drPlanes["id_espcialidad"];
+                    plan.IDEspecialidad = (int)drPlanes["id_especialidad"];
 
                     planes.Add(plan);
                 }

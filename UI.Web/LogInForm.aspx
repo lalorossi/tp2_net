@@ -1,4 +1,8 @@
 ﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LogInForm.aspx.cs" Inherits="UI.Web.LogInForm" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Header" Runat="Server">
+	<link rel="stylesheet" href="bootstrap/projection/assets/css/main.css" />
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder1" runat="server">
             <table>
                 <tr>

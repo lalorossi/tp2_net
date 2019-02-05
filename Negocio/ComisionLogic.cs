@@ -29,5 +29,9 @@ namespace Negocio
         {
             ComisionData.Delete(idCom);
         }
+        public List<Comision> ComisionesDePlan(int IDPlan)
+        {
+            return ComisionData.ComisionesDePlan(IDPlan);
+        }
     }
 }

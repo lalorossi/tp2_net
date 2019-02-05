@@ -54,13 +54,13 @@
             this.tblGlobal.Controls.Add(this.tblControles, 1, 1);
             this.tblGlobal.Controls.Add(this.pictureBox1, 1, 0);
             this.tblGlobal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblGlobal.Location = new System.Drawing.Point(0, 0);
+            this.tblGlobal.Location = new System.Drawing.Point(0, 24);
             this.tblGlobal.Name = "tblGlobal";
             this.tblGlobal.RowCount = 3;
             this.tblGlobal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblGlobal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tblGlobal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblGlobal.Size = new System.Drawing.Size(534, 561);
+            this.tblGlobal.Size = new System.Drawing.Size(534, 537);
             this.tblGlobal.TabIndex = 4;
             // 
             // tblControles
@@ -76,7 +76,7 @@
             this.tblControles.Controls.Add(this.btnPlanesMaterias, 0, 5);
             this.tblControles.Controls.Add(this.btnReportesCursos, 0, 6);
             this.tblControles.Controls.Add(this.btnReportesPlanes, 0, 7);
-            this.tblControles.Location = new System.Drawing.Point(145, 158);
+            this.tblControles.Location = new System.Drawing.Point(145, 146);
             this.tblControles.Name = "tblControles";
             this.tblControles.RowCount = 8;
             this.tblControles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -126,58 +126,68 @@
             // btnAlumnos
             // 
             this.btnAlumnos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAlumnos.AutoSize = true;
             this.btnAlumnos.Location = new System.Drawing.Point(84, 93);
             this.btnAlumnos.Name = "btnAlumnos";
             this.btnAlumnos.Size = new System.Drawing.Size(75, 23);
             this.btnAlumnos.TabIndex = 0;
-            this.btnAlumnos.Text = "Alumnos";
+            this.btnAlumnos.Text = "Alumnos (*)";
             this.btnAlumnos.UseVisualStyleBackColor = true;
             // 
             // btnProfesores
             // 
             this.btnProfesores.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnProfesores.Location = new System.Drawing.Point(84, 123);
+            this.btnProfesores.AutoSize = true;
+            this.btnProfesores.Location = new System.Drawing.Point(82, 123);
             this.btnProfesores.Name = "btnProfesores";
-            this.btnProfesores.Size = new System.Drawing.Size(75, 23);
+            this.btnProfesores.Size = new System.Drawing.Size(80, 23);
             this.btnProfesores.TabIndex = 0;
-            this.btnProfesores.Text = "Profesores";
+            this.btnProfesores.Text = "Profesores (*)";
             this.btnProfesores.UseVisualStyleBackColor = true;
             // 
             // btnPlanesMaterias
             // 
             this.btnPlanesMaterias.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnPlanesMaterias.Location = new System.Drawing.Point(84, 153);
+            this.btnPlanesMaterias.AutoSize = true;
+            this.btnPlanesMaterias.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPlanesMaterias.Location = new System.Drawing.Point(68, 153);
             this.btnPlanesMaterias.Name = "btnPlanesMaterias";
-            this.btnPlanesMaterias.Size = new System.Drawing.Size(75, 23);
+            this.btnPlanesMaterias.Size = new System.Drawing.Size(107, 23);
             this.btnPlanesMaterias.TabIndex = 0;
-            this.btnPlanesMaterias.Text = "Planes/Materias";
+            this.btnPlanesMaterias.Text = "Planes/Materias (*)";
             this.btnPlanesMaterias.UseVisualStyleBackColor = true;
             // 
             // btnReportesCursos
             // 
             this.btnReportesCursos.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnReportesCursos.Location = new System.Drawing.Point(84, 183);
+            this.btnReportesCursos.AutoSize = true;
+            this.btnReportesCursos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReportesCursos.Location = new System.Drawing.Point(77, 183);
             this.btnReportesCursos.Name = "btnReportesCursos";
-            this.btnReportesCursos.Size = new System.Drawing.Size(75, 23);
+            this.btnReportesCursos.Size = new System.Drawing.Size(90, 23);
             this.btnReportesCursos.TabIndex = 0;
             this.btnReportesCursos.Text = "Reporte Cursos";
             this.btnReportesCursos.UseVisualStyleBackColor = true;
+            this.btnReportesCursos.Click += new System.EventHandler(this.btnReportesCursos_Click);
             // 
             // btnReportesPlanes
             // 
             this.btnReportesPlanes.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnReportesPlanes.Location = new System.Drawing.Point(84, 213);
+            this.btnReportesPlanes.AutoSize = true;
+            this.btnReportesPlanes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReportesPlanes.Location = new System.Drawing.Point(77, 213);
             this.btnReportesPlanes.Name = "btnReportesPlanes";
-            this.btnReportesPlanes.Size = new System.Drawing.Size(75, 23);
+            this.btnReportesPlanes.Size = new System.Drawing.Size(90, 23);
             this.btnReportesPlanes.TabIndex = 0;
             this.btnReportesPlanes.Text = "Reporte Planes";
             this.btnReportesPlanes.UseVisualStyleBackColor = true;
+            this.btnReportesPlanes.Click += new System.EventHandler(this.btnReportesPlanes_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(145, 17);
+            this.pictureBox1.Location = new System.Drawing.Point(145, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(244, 135);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -194,6 +204,7 @@
             this.Controls.SetChildIndex(this.tblGlobal, 0);
             this.tblGlobal.ResumeLayout(false);
             this.tblControles.ResumeLayout(false);
+            this.tblControles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

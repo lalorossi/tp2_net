@@ -33,14 +33,6 @@
             this.tcCursos = new System.Windows.Forms.ToolStripContainer();
             this.tlCursos = new System.Windows.Forms.TableLayoutPanel();
             this.dgvCursos = new System.Windows.Forms.DataGridView();
-            this.cursoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnVerCurso = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.tsCursos = new System.Windows.Forms.ToolStrip();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.col0IDCurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col1AnioCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col2Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,13 +40,21 @@
             this.col4Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col5Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col6Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnVerCurso = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.tsCursos = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.cursoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcCursos.ContentPanel.SuspendLayout();
             this.tcCursos.TopToolStripPanel.SuspendLayout();
             this.tcCursos.SuspendLayout();
             this.tlCursos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cursoBindingSource)).BeginInit();
             this.tsCursos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cursoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tcCursos
@@ -63,11 +63,11 @@
             // tcCursos.ContentPanel
             // 
             this.tcCursos.ContentPanel.Controls.Add(this.tlCursos);
-            this.tcCursos.ContentPanel.Size = new System.Drawing.Size(750, 436);
+            this.tcCursos.ContentPanel.Size = new System.Drawing.Size(734, 436);
             this.tcCursos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcCursos.Location = new System.Drawing.Point(0, 0);
             this.tcCursos.Name = "tcCursos";
-            this.tcCursos.Size = new System.Drawing.Size(750, 461);
+            this.tcCursos.Size = new System.Drawing.Size(734, 461);
             this.tcCursos.TabIndex = 0;
             this.tcCursos.Text = "toolStripContainer1";
             // 
@@ -91,7 +91,7 @@
             this.tlCursos.RowCount = 2;
             this.tlCursos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlCursos.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlCursos.Size = new System.Drawing.Size(750, 436);
+            this.tlCursos.Size = new System.Drawing.Size(734, 436);
             this.tlCursos.TabIndex = 0;
             // 
             // dgvCursos
@@ -114,17 +114,56 @@
             this.dgvCursos.Name = "dgvCursos";
             this.dgvCursos.ReadOnly = true;
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCursos.Size = new System.Drawing.Size(744, 401);
+            this.dgvCursos.Size = new System.Drawing.Size(728, 401);
             this.dgvCursos.TabIndex = 0;
             // 
-            // cursoBindingSource
+            // col0IDCurso
             // 
-            this.cursoBindingSource.DataSource = typeof(Business.Entities.Curso);
+            this.col0IDCurso.HeaderText = "IDCurso";
+            this.col0IDCurso.Name = "col0IDCurso";
+            this.col0IDCurso.ReadOnly = true;
+            this.col0IDCurso.Visible = false;
+            // 
+            // col1AnioCalendario
+            // 
+            this.col1AnioCalendario.HeaderText = "Año Calendario";
+            this.col1AnioCalendario.Name = "col1AnioCalendario";
+            this.col1AnioCalendario.ReadOnly = true;
+            // 
+            // col2Cupo
+            // 
+            this.col2Cupo.HeaderText = "Cupo";
+            this.col2Cupo.Name = "col2Cupo";
+            this.col2Cupo.ReadOnly = true;
+            // 
+            // col3Descripcion
+            // 
+            this.col3Descripcion.HeaderText = "Descripcion";
+            this.col3Descripcion.Name = "col3Descripcion";
+            this.col3Descripcion.ReadOnly = true;
+            // 
+            // col4Comision
+            // 
+            this.col4Comision.HeaderText = "Comision";
+            this.col4Comision.Name = "col4Comision";
+            this.col4Comision.ReadOnly = true;
+            // 
+            // col5Materia
+            // 
+            this.col5Materia.HeaderText = "Materia";
+            this.col5Materia.Name = "col5Materia";
+            this.col5Materia.ReadOnly = true;
+            // 
+            // col6Estado
+            // 
+            this.col6Estado.HeaderText = "Estado";
+            this.col6Estado.Name = "col6Estado";
+            this.col6Estado.ReadOnly = true;
             // 
             // btnSalir
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalir.Location = new System.Drawing.Point(672, 410);
+            this.btnSalir.Location = new System.Drawing.Point(656, 410);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -147,7 +186,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(591, 410);
+            this.btnActualizar.Location = new System.Drawing.Point(575, 410);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -197,52 +236,13 @@
             this.tsbEliminar.Text = "toolStripButton3";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // col0IDCurso
+            // cursoBindingSource
             // 
-            this.col0IDCurso.HeaderText = "IDCurso";
-            this.col0IDCurso.Name = "col0IDCurso";
-            this.col0IDCurso.ReadOnly = true;
-            this.col0IDCurso.Visible = false;
-            // 
-            // col1AnioCalendario
-            // 
-            this.col1AnioCalendario.HeaderText = "Año Calendario";
-            this.col1AnioCalendario.Name = "col1AnioCalendario";
-            this.col1AnioCalendario.ReadOnly = true;
-            // 
-            // col2Cupo
-            // 
-            this.col2Cupo.HeaderText = "Cupo";
-            this.col2Cupo.Name = "col2Cupo";
-            this.col2Cupo.ReadOnly = true;
-            // 
-            // col3Descripcion
-            // 
-            this.col3Descripcion.HeaderText = "Descripcion";
-            this.col3Descripcion.Name = "col3Descripcion";
-            this.col3Descripcion.ReadOnly = true;
-            // 
-            // col4Comision
-            // 
-            this.col4Comision.HeaderText = "Comision";
-            this.col4Comision.Name = "col4Comision";
-            this.col4Comision.ReadOnly = true;
-            // 
-            // col5Materia
-            // 
-            this.col5Materia.HeaderText = "Materia";
-            this.col5Materia.Name = "col5Materia";
-            this.col5Materia.ReadOnly = true;
-            // 
-            // col6Estado
-            // 
-            this.col6Estado.HeaderText = "Estado";
-            this.col6Estado.Name = "col6Estado";
-            this.col6Estado.ReadOnly = true;
+            this.cursoBindingSource.DataSource = typeof(Business.Entities.Curso);
             // 
             // Cursos
             // 
-            this.ClientSize = new System.Drawing.Size(750, 461);
+            this.ClientSize = new System.Drawing.Size(734, 461);
             this.Controls.Add(this.tcCursos);
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "Cursos";
@@ -254,9 +254,9 @@
             this.tcCursos.PerformLayout();
             this.tlCursos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cursoBindingSource)).EndInit();
             this.tsCursos.ResumeLayout(false);
             this.tsCursos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cursoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -34,5 +34,14 @@ namespace UI.Web
         {
             Response.Redirect("Especialidades.aspx");
         }
+
+        protected void btnReporteCursos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ReportesCursosForm.aspx");
+        }
+        protected void btnReportePlanes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ReportesPlanesForm.aspx");
+        }
     }
 }

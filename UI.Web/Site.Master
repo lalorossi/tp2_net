@@ -7,7 +7,7 @@
 	<title>Academia</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="bootstrap/projection/assets/css/main.css" />
+    <asp:contentplaceholder id="Header" runat="server" />
 </head>
 <body>
     <form id="bodyForm" runat="server">

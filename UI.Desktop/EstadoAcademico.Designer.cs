@@ -30,6 +30,15 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvCursos = new System.Windows.Forms.DataGridView();
+            this.col0IDCurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col0IDComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col1anioCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col2Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col3Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col4Profesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col5Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col6Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col7FechaModificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbFiltroEstado = new System.Windows.Forms.ComboBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.cbFiltroAño = new System.Windows.Forms.ComboBox();
@@ -41,15 +50,6 @@
             this.lblFlechaFiltro = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblFiltrosAplicados = new System.Windows.Forms.Label();
-            this.col0IDCurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col0IDComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col1anioCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col2Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col3Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col4Profesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col5Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col6Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col7FechaModificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +83,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 309);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(746, 309);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvCursos
@@ -108,6 +108,63 @@
             this.dgvCursos.ReadOnly = true;
             this.dgvCursos.Size = new System.Drawing.Size(754, 228);
             this.dgvCursos.TabIndex = 3;
+            // 
+            // col0IDCurso
+            // 
+            this.col0IDCurso.Frozen = true;
+            this.col0IDCurso.HeaderText = "Curso";
+            this.col0IDCurso.Name = "col0IDCurso";
+            this.col0IDCurso.ReadOnly = true;
+            this.col0IDCurso.Visible = false;
+            // 
+            // col0IDComision
+            // 
+            this.col0IDComision.HeaderText = "Comision";
+            this.col0IDComision.Name = "col0IDComision";
+            this.col0IDComision.ReadOnly = true;
+            this.col0IDComision.Visible = false;
+            // 
+            // col1anioCalendario
+            // 
+            this.col1anioCalendario.HeaderText = "Año";
+            this.col1anioCalendario.Name = "col1anioCalendario";
+            this.col1anioCalendario.ReadOnly = true;
+            // 
+            // col2Comision
+            // 
+            this.col2Comision.HeaderText = "Comision";
+            this.col2Comision.Name = "col2Comision";
+            this.col2Comision.ReadOnly = true;
+            // 
+            // col3Materia
+            // 
+            this.col3Materia.HeaderText = "Materia";
+            this.col3Materia.Name = "col3Materia";
+            this.col3Materia.ReadOnly = true;
+            // 
+            // col4Profesor
+            // 
+            this.col4Profesor.HeaderText = "Profesor";
+            this.col4Profesor.Name = "col4Profesor";
+            this.col4Profesor.ReadOnly = true;
+            // 
+            // col5Estado
+            // 
+            this.col5Estado.HeaderText = "Condicion";
+            this.col5Estado.Name = "col5Estado";
+            this.col5Estado.ReadOnly = true;
+            // 
+            // col6Nota
+            // 
+            this.col6Nota.HeaderText = "Nota";
+            this.col6Nota.Name = "col6Nota";
+            this.col6Nota.ReadOnly = true;
+            // 
+            // col7FechaModificacion
+            // 
+            this.col7FechaModificacion.HeaderText = "Fecha de Modificación";
+            this.col7FechaModificacion.Name = "col7FechaModificacion";
+            this.col7FechaModificacion.ReadOnly = true;
             // 
             // cbFiltroEstado
             // 
@@ -223,68 +280,11 @@
             this.lblFiltrosAplicados.TabIndex = 0;
             this.lblFiltrosAplicados.Text = "(Sin filtros aplicados)";
             // 
-            // col0IDCurso
-            // 
-            this.col0IDCurso.Frozen = true;
-            this.col0IDCurso.HeaderText = "Curso";
-            this.col0IDCurso.Name = "col0IDCurso";
-            this.col0IDCurso.ReadOnly = true;
-            this.col0IDCurso.Visible = false;
-            // 
-            // col0IDComision
-            // 
-            this.col0IDComision.HeaderText = "Comision";
-            this.col0IDComision.Name = "col0IDComision";
-            this.col0IDComision.ReadOnly = true;
-            this.col0IDComision.Visible = false;
-            // 
-            // col1anioCalendario
-            // 
-            this.col1anioCalendario.HeaderText = "Año";
-            this.col1anioCalendario.Name = "col1anioCalendario";
-            this.col1anioCalendario.ReadOnly = true;
-            // 
-            // col2Comision
-            // 
-            this.col2Comision.HeaderText = "Comision";
-            this.col2Comision.Name = "col2Comision";
-            this.col2Comision.ReadOnly = true;
-            // 
-            // col3Materia
-            // 
-            this.col3Materia.HeaderText = "Materia";
-            this.col3Materia.Name = "col3Materia";
-            this.col3Materia.ReadOnly = true;
-            // 
-            // col4Profesor
-            // 
-            this.col4Profesor.HeaderText = "Profesor";
-            this.col4Profesor.Name = "col4Profesor";
-            this.col4Profesor.ReadOnly = true;
-            // 
-            // col5Estado
-            // 
-            this.col5Estado.HeaderText = "Condicion";
-            this.col5Estado.Name = "col5Estado";
-            this.col5Estado.ReadOnly = true;
-            // 
-            // col6Nota
-            // 
-            this.col6Nota.HeaderText = "Nota";
-            this.col6Nota.Name = "col6Nota";
-            this.col6Nota.ReadOnly = true;
-            // 
-            // col7FechaModificacion
-            // 
-            this.col7FechaModificacion.HeaderText = "Fecha de Modificación";
-            this.col7FechaModificacion.Name = "col7FechaModificacion";
-            this.col7FechaModificacion.ReadOnly = true;
-            // 
             // EstadoAcademico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 309);
+            this.ClientSize = new System.Drawing.Size(746, 309);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "EstadoAcademico";
             this.Text = "EstadoAcademico";

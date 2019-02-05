@@ -156,5 +156,39 @@ namespace Data.Database
             }
             curso.State = BusinessEntity.States.Unmodified;
         }
+        public List<Comision> ComisionesDePlan(int IDPlan)
+        {
+            List<Comision> comisiones = new List<Comision>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdCurso = new SqlCommand("select * from comisiones where id_plan = @idPlan", sqlConn);
+
+                cmdCurso.Parameters.Add("@idPlan", SqlDbType.Int).Value = IDPlan;
+
+                SqlDataReader drComision = cmdCurso.ExecuteReader();
+
+                while (drComision.Read())
+                {
+                    Comision com = new Comision();
+
+                    com.ID = (int)drComision["id_comision"];
+                    com.Descripcion = (string)drComision["desc_comision"];
+                    com.AnioEspecialidad = (int)drComision["anio_especialidad"];
+                    com.IDPlan = (int)drComision["id_plan"];
+
+                    comisiones.Add(com);
+                }
+
+                drComision.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pueden recuperar los datos de la comision", ex);
+            }
+            this.CloseConnection();
+            return comisiones;
+        }
     }
 }

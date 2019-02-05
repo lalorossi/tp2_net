@@ -1,4 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EstadoAcademico.aspx.cs" Inherits="UI.Web.EstadoAcademico" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Header" Runat="Server">
+	<link rel="stylesheet" href="bootstrap/projection/assets/css/main.css" />
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder1" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
         <h4 id="HeaderFiltros" onclick="SwitchFiltros()" style="cursor: pointer; width:max-content;">Filtros <span id="SpanArrow" style="font-family: 'Wingdings 3'">q</span></h4>

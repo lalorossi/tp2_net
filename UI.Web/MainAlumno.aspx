@@ -1,4 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MainAlumno.aspx.cs" Inherits="UI.Web.MainAlumno" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Header" Runat="Server">
+	<link rel="stylesheet" href="bootstrap/projection/assets/css/main.css" />
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder1" runat="server">
     <asp:Table ID="Table1" runat="server">
         <asp:TableRow HorizontalAlign="Center">

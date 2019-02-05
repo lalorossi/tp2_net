@@ -27,19 +27,31 @@ namespace UI.Desktop
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             Usuarios formUsuarios = new Usuarios();
-            formUsuarios.ShowDialog();
+            formUsuarios.Show();
         }
 
         private void btnCursos_Click(object sender, EventArgs e)
         {
             Cursos formCursos = new Cursos();
-            formCursos.ShowDialog();
+            formCursos.Show();
         }
 
         private void btnEspecialidades_Click(object sender, EventArgs e)
         {
             Especialidades formEspecialidades = new Especialidades();
-            formEspecialidades.ShowDialog();
+            formEspecialidades.Show();
+        }
+
+        private void btnReportesCursos_Click(object sender, EventArgs e)
+        {
+            FormReporteCursos formReporteCursos = new FormReporteCursos();
+            formReporteCursos.Show();
+        }
+
+        private void btnReportesPlanes_Click(object sender, EventArgs e)
+        {
+            FormReportePlanes formReportePlanes = new FormReportePlanes();
+            formReportePlanes.Show();
         }
     }
 }

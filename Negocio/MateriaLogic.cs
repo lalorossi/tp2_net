@@ -29,5 +29,9 @@ namespace Negocio
         {
             MateriaData.Delete(idMat);
         }
+        public List<Materia> MateriasDeCurso(int IDPlan)
+        {
+            return MateriaData.MateriasDePlan(IDPlan);
+        }
     }
 }

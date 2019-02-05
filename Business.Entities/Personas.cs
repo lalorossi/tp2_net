@@ -61,7 +61,7 @@ namespace Business.Entities
             set { _TipoPersona = value; }
         }
 
-        public string Descripcion { get => _Nombre + " " + _Apellido + " _ " + _Legajo; set => _Descripcion = value; }
+        public string Descripcion { get => _Nombre + " " + _Apellido; set => _Descripcion = value; }
         private string _Descripcion;
     }
 }
